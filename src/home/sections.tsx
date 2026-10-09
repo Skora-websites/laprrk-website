@@ -1,37 +1,10 @@
-import { CountUp, Reveal, TiltCard } from "../components/motion-primitives";
+import { Reveal, TiltCard } from "../components/motion-primitives";
 import { GlassCard, SectionHead } from "../components/chrome";
 import {
-  HERO, STATS, SERVICES_HEAD, DIVISIONS, TRAINING_DIVISION, TECH_HEAD, TECH_CARDS,
+  SERVICES_HEAD, DIVISIONS, TRAINING_DIVISION, TECH_HEAD, TECH_CARDS,
   SYNERGY_HEAD, SYNERGY, ROLES_HEAD, ROLES, WHY_HEAD, WHY_CARDS,
   STEPS, CASES_HEAD, CASES, INDUSTRIES, POSTS_HEAD, POSTS, FAQS, CTA,
 } from "../lib/home-data";
-
-const STAT_ICONS = ["◈", "✦", "⬢", "✧"];
-
-export function Stats() {
-  return (
-    <div className="container stats-float-wrap" aria-label="Company statistics">
-      <div className="stats-float">
-        {STATS.map((s, i) => (
-          <Reveal key={s.label}>
-            <div className="stat-cell">
-              <span className="stat-ic" aria-hidden="true">{STAT_ICONS[i % STAT_ICONS.length]}</span>
-              <div>
-                <div className="stat-num">
-                  <CountUp value={s.value} /><span className="stat-suffix">{s.suffix}</span>
-                </div>
-                <p className="stat-label">{s.label}</p>
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-      <ul className="trust-strip" aria-label="Engagement highlights">
-        {HERO.meta.map((m) => <li key={m}>{m}</li>)}
-      </ul>
-    </div>
-  );
-}
 
 export function Services() {
   return (
