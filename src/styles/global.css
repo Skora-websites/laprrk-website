@@ -1918,6 +1918,72 @@ h1, h2, h3, h4 {
   z-index: 70 !important;
 }
 
+/* ---------- Inner page hero ---------- */
+
+.page-hero {
+  min-height: 0;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(clamp(56px, 7vw, 96px) + 72px);
+  padding-bottom: clamp(72px, 8vw, 110px);
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+  max-width: 1280px;
+}
+
+.crumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: #8f8cb0;
+  margin-bottom: 6px;
+}
+
+.crumbs a {
+  color: #c4b5fd;
+  text-decoration: none;
+}
+
+.crumbs a:hover {
+  text-decoration: underline;
+}
+
+.page-title {
+  font-size: clamp(38px, 4.6vw, 62px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  color: #ffffff;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+
+.page-hero-inner .lede {
+  margin-top: 0;
+}
+
+.page-hero-inner .hero-ctas {
+  margin-top: 10px;
+}
+
+.legal-body {
+  display: grid;
+  gap: 18px;
+  color: var(--text);
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.legal-body p {
+  margin: 0;
+}
+
 /* ================= Reduced motion base ================= */
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,728 @@
+import type { PageData } from "./types";
+
+const BOOK = { label: "Book a free consultation", href: "contact.html" };
+
+const TRACK_FAQS = [
+  { q: "How are batches scheduled?", a: "Weekday or weekend batches, online live or on-premise, planned around your delivery calendar." },
+  { q: "How do you measure impact?", a: "Pre and post assessments, lab scores and applied projects, reported per participant and per batch." },
+  { q: "Can content be customised to our stack?", a: "Yes. Tracks are tailored to your approved tools, data and real use cases." },
+];
+
+export const TRAINING_PAGES: Record<string, PageData> = {
+  "corporate-training": {
+    slug: "corporate-training",
+    title: "Training that shows up in delivery",
+    description: "Live, hands-on training for IT companies and institutes.",
+    eyebrow: "Training overview",
+    lede: "Live, hands-on programmes for IT companies upskilling their teams, and for colleges preparing faculty and students. Around 70% labs, with pre and post assessments.",
+    secondaryLabel: "See corporate tracks",
+    secondaryHref: "training-for-it-corporates.html",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Two practices, one standard",
+        items: [
+          { title: "For IT corporates", body: "18 role-based tracks from AI literacy to MLOps and DevSecOps." },
+          { title: "For institutes", body: "FDPs, bootcamps, placement and NEP-aligned credit courses." },
+          { title: "Live instruction", body: "Real trainers, real labs, real code review. No recorded-only batches." },
+          { title: "Applied projects", body: "Capstones on your stack or your students' portfolios." },
+          { title: "Assessments", body: "Pre and post scores plus manager-ready impact reports." },
+          { title: "Certification paths", body: "AI/data science, cloud/DevOps, testing and cybersecurity tracks." },
+        ],
+      },
+      {
+        kind: "stats",
+        title: "Training track record",
+        items: [
+          { v: "500+", l: "professionals trained" },
+          { v: "70%", l: "hands-on lab time" },
+          { v: "38%", l: "average assessment improvement" },
+          { v: "120", l: "engineers in one 12-week programme" },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "Online or on-premise?", a: "Both. Online live batches across time zones, or trainers at your campus or office." },
+          { q: "What batch sizes work best?", a: "15-30 for interactive tracks. Larger cohorts split into parallel batches." },
+          ...TRACK_FAQS.slice(1),
+        ],
+      },
+    ],
+    related: [
+      { label: "Trainings for IT corporates", href: "training-for-it-corporates.html" },
+      { label: "Trainings for institutes", href: "training-for-institutes.html" },
+      { label: "GenAI & Agentic AI Training", href: "generative-ai-training.html" },
+      BOOK,
+    ],
+  },
+  "training-for-it-corporates": {
+    slug: "training-for-it-corporates",
+    title: "Training for IT corporates",
+    description: "18 role-based tracks for delivery teams.",
+    eyebrow: "For IT corporates",
+    lede: "18 tracks across AI, data, cloud, DevOps, security and testing. Role-based cohorts, your tools, applied projects and measured outcomes.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Popular tracks",
+        items: [
+          { title: "Generative AI & Agentic AI", body: "RAG apps and agents as capstone. For developers and leaders." },
+          { title: "AI Literacy for All", body: "Productivity and governance basics for every employee." },
+          { title: "AI/ML & MLOps", body: "From modelling to production pipelines." },
+          { title: "Data & Lakehouse", body: "Engineering plus Power BI and Tableau analytics." },
+          { title: "Cloud & DevOps", body: "AWS, Azure, GCP, Kubernetes and DevSecOps." },
+          { title: "Security & Testing", body: "Secure coding, SOC foundations and test automation." },
+        ],
+      },
+      {
+        kind: "points",
+        title: "How corporate batches run",
+        tint: true,
+        items: [
+          "Skill-gap discussion and pre-assessment before day one",
+          "Weekday or weekend schedules around your sprints",
+          "Office hours and doubt-clearing between sessions",
+          "Post-assessment and manager impact report at close",
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "GenAI Training", href: "generative-ai-training.html" },
+      { label: "Cloud Training", href: "cloud-training.html" },
+      { label: "Training overview", href: "corporate-training.html" },
+      BOOK,
+    ],
+  },
+  "training-for-institutes": {
+    slug: "training-for-institutes",
+    title: "Training for institutes",
+    description: "FDPs, bootcamps, placement and NEP-aligned programmes.",
+    eyebrow: "For institutes",
+    lede: "Faculty development, industry-readiness bootcamps, placement preparation, NEP-aligned credit courses and Centres of Excellence for colleges and universities.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Institute programmes",
+        items: [
+          { title: "Faculty Development", body: "FDPs in AI, cloud, data and testing with teaching outcomes." },
+          { title: "Readiness Bootcamp", body: "Project-based semesters ending in demo day." },
+          { title: "Placement Readiness", body: "Aptitude, coding, interviews and communication." },
+          { title: "NEP Credit Courses", body: "Industry minors and add-on courses with outcome mapping." },
+          { title: "Certifications", body: "AI/data, cloud/DevOps, testing and security paths." },
+          { title: "CoE & Labs", body: "Lab setup, mentor networks and hackathons." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "Do programmes align with university norms?", a: "Yes. NEP-aligned outcomes, attendance and assessment formats your academic council can approve." },
+          { q: "Can faculty co-deliver?", a: "Yes. FDP first, then co-delivery, then independent delivery with our mentoring." },
+          { q: "What does a bootcamp cost per student?", a: "Priced per batch with cohort discounts. Share batch size for a written quote." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Faculty Development", href: "faculty-development-programs.html" },
+      { label: "Placement Training", href: "placement-training.html" },
+      { label: "Training overview", href: "corporate-training.html" },
+      BOOK,
+    ],
+  },
+  "generative-ai-training": {
+    slug: "generative-ai-training",
+    title: "Generative AI & agentic AI training",
+    description: "GenAI engineering with RAG and agent capstones.",
+    eyebrow: "For IT corporates",
+    lede: "Separate tracks for leaders, business teams and developers, with a working RAG app and an agent as the capstone. On your approved models and tools.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "Leaders track", body: "Use cases, ROI, risk and governance in two sessions." },
+          { title: "Business teams", body: "Prompting, copilots and review discipline for daily work." },
+          { title: "Developers", body: "Embeddings, RAG, evaluation and guardrails in code." },
+          { title: "Agents module", body: "Tools, MCP servers and approval workflows." },
+          { title: "RAG capstone", body: "A grounded assistant over your own documents." },
+          { title: "Agent capstone", body: "An approval-gated agent on a real workflow." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "GenAI Apps (service)", href: "generative-ai.html" },
+      { label: "AI Literacy Training", href: "ai-literacy-training.html" },
+      { label: "AI/ML & MLOps Training", href: "machine-learning-mlops-training.html" },
+      BOOK,
+    ],
+  },
+  "ai-literacy-training": {
+    slug: "ai-literacy-training",
+    title: "AI productivity & AI literacy for all employees",
+    description: "AI fluency for every employee on approved tools.",
+    eyebrow: "For IT corporates",
+    lede: "Half-day to two-day fluency programmes: copilots, prompting, data hygiene and AI policy. For HR, finance, sales, support and operations teams.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Programme contents",
+        items: [
+          { title: "Copilot workflows", body: "Drafting, summarising and analysis in daily tools." },
+          { title: "Prompting basics", body: "Context, examples and iteration that actually work." },
+          { title: "Data hygiene", body: "What never goes into a public model, and why." },
+          { title: "Role playbooks", body: "HR screening drafts, finance reconciliations, support macros." },
+          { title: "Policy briefing", body: "Your AI acceptable-use policy, explained with examples." },
+          { title: "Champions network", body: "Train internal champions to sustain adoption." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "GenAI Training", href: "generative-ai-training.html" },
+      { label: "Data Analytics Training", href: "data-analytics-training.html" },
+      { label: "Training overview", href: "corporate-training.html" },
+      BOOK,
+    ],
+  },
+  "machine-learning-mlops-training": {
+    slug: "machine-learning-mlops-training",
+    title: "AI/ML & MLOps training",
+    description: "Model building and production MLOps pipelines.",
+    eyebrow: "For IT corporates",
+    lede: "From scikit-learn baselines to deployed pipelines: feature stores, experiment tracking, CI/CD for models and monitoring.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "ML foundations", body: "Regression, trees, validation and honest baselines." },
+          { title: "Deep learning", body: "PyTorch workflows for vision and language tasks." },
+          { title: "Feature engineering", body: "Stores, versioning and training-serving skew." },
+          { title: "MLOps", body: "MLflow, pipelines, registry and deployment." },
+          { title: "Monitoring", body: "Drift, performance decay and retraining triggers." },
+          { title: "Capstone", body: "An end-to-end model deployed behind an API." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "AI & ML (service)", href: "ai-machine-learning.html" },
+      { label: "Data Engineering Training", href: "data-engineering-training.html" },
+      { label: "GenAI Training", href: "generative-ai-training.html" },
+      BOOK,
+    ],
+  },
+  "data-engineering-training": {
+    slug: "data-engineering-training",
+    title: "Data engineering & lakehouse training",
+    description: "Hands-on lakehouse engineering.",
+    eyebrow: "For IT corporates",
+    lede: "Spark, dbt, Databricks, Snowflake and Fabric taught on real datasets, ending with a governed mini-lakehouse your team built.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "SQL mastery", body: "Window functions, CTEs and performance thinking." },
+          { title: "Spark & Databricks", body: "Notebooks, jobs and Delta Lake patterns." },
+          { title: "dbt", body: "Modelling, tests, docs and CI for analytics code." },
+          { title: "Streaming basics", body: "Kafka concepts and incremental pipelines." },
+          { title: "Quality & contracts", body: "Tests, freshness SLAs and PII handling." },
+          { title: "Capstone lakehouse", body: "A governed pipeline the team demos to leadership." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Data Engineering (service)", href: "data-engineering-analytics.html" },
+      { label: "Data Analytics Training", href: "data-analytics-training.html" },
+      { label: "AI/ML Training", href: "machine-learning-mlops-training.html" },
+      BOOK,
+    ],
+  },
+  "data-analytics-training": {
+    slug: "data-analytics-training",
+    title: "Data analytics & BI training (Power BI, Tableau)",
+    description: "Analyst tracks in SQL, Power BI and Tableau.",
+    eyebrow: "For IT corporates",
+    lede: "Analyst cohorts in SQL, DAX, Power BI and Tableau, working on your business data toward certified, stakeholder-ready dashboards.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "SQL for analysts", body: "Joins to windows to performance-aware queries." },
+          { title: "Power BI", body: "DAX, modelling, RLS and deployment pipelines." },
+          { title: "Tableau", body: "Calcs, LOD expressions and dashboard design." },
+          { title: "Metric design", body: "Definitions stakeholders agree on once." },
+          { title: "Storytelling", body: "Insight structure for leadership reviews." },
+          { title: "Capstone dashboard", body: "A governed dashboard on a real business question." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Data Engineering Training", href: "data-engineering-training.html" },
+      { label: "AI Literacy Training", href: "ai-literacy-training.html" },
+      { label: "Data Engineering (service)", href: "data-engineering-analytics.html" },
+      BOOK,
+    ],
+  },
+  "cloud-training": {
+    slug: "cloud-training",
+    title: "Cloud training: AWS, Azure & Google Cloud",
+    description: "Role-based cloud tracks with labs.",
+    eyebrow: "For IT corporates",
+    lede: "Architect, developer and operations tracks per cloud, lab-heavy, with certification readiness for Solutions Architect and Administrator paths.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "Cloud foundations", body: "IAM, networking and billing across clouds." },
+          { title: "AWS track", body: "EC2 to EKS to serverless with Well-Architected labs." },
+          { title: "Azure track", body: "VNets, AKS and DevOps integration." },
+          { title: "GCP track", body: "VPC, GKE and BigQuery-centred data paths." },
+          { title: "Terraform", body: "Modules, state and environment promotion." },
+          { title: "Certification prep", body: "Mock exams and readiness scoring." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Cloud Services", href: "cloud-services.html" },
+      { label: "DevOps Training", href: "devops-kubernetes-training.html" },
+      { label: "Cloud & DevOps Certification", href: "cloud-devops-certification-program.html" },
+      BOOK,
+    ],
+  },
+  "devops-kubernetes-training": {
+    slug: "devops-kubernetes-training",
+    title: "DevOps, Kubernetes & DevSecOps training",
+    description: "Pipelines and Kubernetes taught on live clusters.",
+    eyebrow: "For IT corporates",
+    lede: "Git, pipelines, containers, Kubernetes and security gates taught on live clusters your team operates during the course itself.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "Git & branching", body: "Trunk-based flow and review discipline." },
+          { title: "CI/CD", body: "GitHub Actions pipelines with quality gates." },
+          { title: "Containers", body: "Dockerfiles, registries and image hygiene." },
+          { title: "Kubernetes", body: "Pods to ingress to Helm on live clusters." },
+          { title: "GitOps", body: "Argo CD declarative delivery." },
+          { title: "DevSecOps", body: "SAST, SCA and secret scanning in pipeline." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "DevOps (service)", href: "devops-devsecops.html" },
+      { label: "Platform & SRE Training", href: "platform-engineering-sre-training.html" },
+      { label: "Cloud Training", href: "cloud-training.html" },
+      BOOK,
+    ],
+  },
+  "platform-engineering-sre-training": {
+    slug: "platform-engineering-sre-training",
+    title: "Platform engineering & SRE training",
+    description: "IDPs, SLOs and reliability practices.",
+    eyebrow: "For IT corporates",
+    lede: "Internal developer platforms, Backstage, SLOs and incident practices for teams that own reliability, not just uptime.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "Platform thinking", body: "Platform-as-product and golden paths." },
+          { title: "Backstage", body: "Catalogues, templates and docs-as-code." },
+          { title: "SLOs & error budgets", body: "Burn rates, alerting and policy." },
+          { title: "Incident practice", body: "Game days, blameless reviews and runbooks." },
+          { title: "Observability", body: "Logs, metrics, traces and dashboards." },
+          { title: "Capstone", body: "A paved-road service template the org adopts." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "DevOps Training", href: "devops-kubernetes-training.html" },
+      { label: "DevOps (service)", href: "devops-devsecops.html" },
+      { label: "Cloud Training", href: "cloud-training.html" },
+      BOOK,
+    ],
+  },
+  "cybersecurity-training": {
+    slug: "cybersecurity-training",
+    title: "Cybersecurity & secure coding training",
+    description: "Threat basics and SOC analyst foundations.",
+    eyebrow: "For IT corporates",
+    lede: "Secure coding for developers and analyst foundations for SOC aspirants: OWASP, threat basics, SIEM and incident handling labs.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "OWASP Top 10", body: "Exploit, fix and verify in lab apps." },
+          { title: "Secure coding", body: "Language-specific patterns for Java, .NET and JS." },
+          { title: "Network basics", body: "Protocols, segmentation and firewall thinking." },
+          { title: "SIEM & SOC", body: "Log analysis, triage and escalation drills." },
+          { title: "Cloud security", body: "IAM, misconfiguration hunts and guardrails." },
+          { title: "Capstone", body: "A findings report on a lab environment." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Cybersecurity (service)", href: "cybersecurity.html" },
+      { label: "Cybersecurity Certification", href: "cybersecurity-certification-program.html" },
+      { label: "DevOps Training", href: "devops-kubernetes-training.html" },
+      BOOK,
+    ],
+  },
+  "software-testing-training": {
+    slug: "software-testing-training",
+    title: "Software testing & test automation training",
+    description: "Manual foundations plus Playwright automation.",
+    eyebrow: "For IT corporates",
+    lede: "Manual testing craft plus API and UI automation with Playwright, CI integration and flakiness discipline.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Track contents",
+        items: [
+          { title: "Testing craft", body: "Cases, boundaries, exploratory charters." },
+          { title: "API testing", body: "Postman to contract testing." },
+          { title: "Playwright", body: "Locators, fixtures, POM and CI runs." },
+          { title: "Mobile basics", body: "Appium concepts and device strategy." },
+          { title: "Performance intro", body: "k6 scripting and reading results." },
+          { title: "Capstone suite", body: "A green CI suite on a real app." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "QA (service)", href: "qa-test-automation.html" },
+      { label: "QA Career Programme", href: "software-testing-career-program.html" },
+      { label: "DevOps Training", href: "devops-kubernetes-training.html" },
+      BOOK,
+    ],
+  },
+  "faculty-development-programs": {
+    slug: "faculty-development-programs",
+    title: "Faculty development programmes (FDP)",
+    description: "AI, cloud and data FDPs with teaching outcomes.",
+    eyebrow: "For institutes",
+    lede: "One- and two-week FDPs in AI, GenAI, cloud, data and testing, with lab work mapped to what faculty will actually teach.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "FDP portfolio",
+        items: [
+          { title: "GenAI for faculty", body: "Concepts plus classroom-ready demos and assignments." },
+          { title: "Cloud & DevOps", body: "Lab setups faculty can replicate for students." },
+          { title: "Data & analytics", body: "Datasets and projects sized for semester use." },
+          { title: "Outcome mapping", body: "CO-PO mapping support for accreditation files." },
+          { title: "Co-delivery", body: "Faculty assist in live batches before solo delivery." },
+          { title: "Certificates", body: "Participation and achievement documentation." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "Are FDPs eligible for academic credit norms?", a: "Programmes are documented with hours, outcomes and assessments to fit AICTE/UGC-style FDP requirements. Confirm with your affiliating body." },
+          { q: "Online or on campus?", a: "Both, including hybrid with lab days on campus." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Trainings for institutes", href: "training-for-institutes.html" },
+      { label: "NEP Credit Courses", href: "nep-credit-courses.html" },
+      { label: "CoE & Lab Setup", href: "centre-of-excellence.html" },
+      BOOK,
+    ],
+  },
+  "industry-readiness-bootcamp": {
+    slug: "industry-readiness-bootcamp",
+    title: "Industry-readiness bootcamp for students",
+    description: "Project-based bootcamps ending in demo day.",
+    eyebrow: "For institutes",
+    lede: "Semester or summer bootcamps in full-stack, data and testing tracks. Students build portfolio projects and demo them to reviewers.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Bootcamp structure",
+        items: [
+          { title: "Foundations", body: "Git, programming and problem-solving refreshers." },
+          { title: "Track depth", body: "Full-stack, data or QA paths with daily labs." },
+          { title: "Team projects", body: "Agile squads building to a real brief." },
+          { title: "Demo day", body: "External reviewers, awards and recordings." },
+          { title: "Portfolios", body: "GitHub and resume polish included." },
+          { title: "Top-performer pipeline", body: "Fast track into Hire-Train-Deploy employers." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "Which semesters suit bootcamps?", a: "Typically 5th-7th semester for engineering, timed before placement season." },
+          { q: "How are students assessed?", a: "Lab scores, project reviews and a final demo rubric shared with the college." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Placement Training", href: "placement-training.html" },
+      { label: "Hire-Train-Deploy", href: "campus-hiring.html" },
+      { label: "Hackathons & Internships", href: "hackathons-internships.html" },
+      BOOK,
+    ],
+  },
+  "placement-training": {
+    slug: "placement-training",
+    title: "Placement readiness programme",
+    description: "Aptitude, coding, interviews and communication.",
+    eyebrow: "For institutes",
+    lede: "A full placement-season system: aptitude drills, coding practice, mock interviews, group discussions and resume engineering.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Programme modules",
+        items: [
+          { title: "Aptitude", body: "Quant, logical and verbal with timed mocks." },
+          { title: "Coding", body: "DSA patterns and company-tagged practice." },
+          { title: "Mock interviews", body: "Technical and HR rounds with feedback sheets." },
+          { title: "Group discussions", body: "Structured GD practice with scoring." },
+          { title: "Resumes", body: "One-page engineering resumes, reviewed line by line." },
+          { title: "Company prep", body: "Role-specific prep sprints before drives." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "When should training start?", a: "At least one semester before placement season for full effect." },
+          { q: "Do you guarantee placements?", a: "No honest trainer can. We guarantee preparation quality and report conversion metrics." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Readiness Bootcamp", href: "industry-readiness-bootcamp.html" },
+      { label: "QA Career Programme", href: "software-testing-career-program.html" },
+      { label: "Trainings for institutes", href: "training-for-institutes.html" },
+      BOOK,
+    ],
+  },
+  "nep-credit-courses": {
+    slug: "nep-credit-courses",
+    title: "NEP-aligned credit & add-on courses",
+    description: "Industry minors designed for NEP 2020 structures.",
+    eyebrow: "For institutes",
+    lede: "Skill-based credit courses and industry minors mapped to NEP 2020 structures, with outcomes, assessments and faculty involvement designed in.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Course design",
+        items: [
+          { title: "Outcome mapping", body: "COs, POs and assessment blueprints for approval." },
+          { title: "Industry minors", body: "GenAI, cloud, data and full-stack minor tracks." },
+          { title: "Add-on certificates", body: "Short courses that stack into minors." },
+          { title: "Faculty enablement", body: "FDP plus co-delivery before handover." },
+          { title: "Lab infrastructure", body: "Cloud-lab setups colleges can reuse." },
+          { title: "Board documentation", body: "Syllabus files ready for academic councils." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "How long does approval support take?", a: "Documentation is delivered in 2-3 weeks; council timelines vary by institution." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Faculty Development", href: "faculty-development-programs.html" },
+      { label: "AI/Data Certification", href: "ai-data-certification-program.html" },
+      { label: "Blog guide", href: "nep-industry-courses-colleges.html" },
+      BOOK,
+    ],
+  },
+  "ai-data-certification-program": {
+    slug: "ai-data-certification-program",
+    title: "AI, GenAI & data science certification",
+    description: "A rigorous path from Python to GenAI systems.",
+    eyebrow: "For institutes",
+    lede: "A multi-month certification from Python and statistics to ML and GenAI systems, with proctored assessments and project portfolios.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Certification stages",
+        items: [
+          { title: "Python & maths", body: "Programming and statistics foundations." },
+          { title: "Data handling", body: "SQL, pandas and visualisation." },
+          { title: "Machine learning", body: "Classical ML with evaluated projects." },
+          { title: "Deep learning", body: "Neural networks with PyTorch labs." },
+          { title: "GenAI systems", body: "RAG, evaluation and guardrails." },
+          { title: "Certification", body: "Proctored exam plus portfolio defence." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "GenAI Training", href: "generative-ai-training.html" },
+      { label: "Cloud & DevOps Certification", href: "cloud-devops-certification-program.html" },
+      { label: "Trainings for institutes", href: "training-for-institutes.html" },
+      BOOK,
+    ],
+  },
+  "cloud-devops-certification-program": {
+    slug: "cloud-devops-certification-program",
+    title: "Cloud & DevOps certification programme",
+    description: "Lab-heavy cloud certification prep.",
+    eyebrow: "For institutes",
+    lede: "Cloud fundamentals through Kubernetes and CI/CD, aligned to associate-level certifications with mock exams and lab scorecards.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Certification stages",
+        items: [
+          { title: "Cloud foundations", body: "Core services across one primary cloud." },
+          { title: "Networking & IAM", body: "The two topics that decide exam results." },
+          { title: "Containers & K8s", body: "Docker to CKA-style cluster tasks." },
+          { title: "CI/CD", body: "Pipeline projects with quality gates." },
+          { title: "Terraform", body: "IaC projects with state management." },
+          { title: "Mock exams", body: "Readiness scoring before the real attempt." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Cloud Training", href: "cloud-training.html" },
+      { label: "AI/Data Certification", href: "ai-data-certification-program.html" },
+      { label: "Cloud Services", href: "cloud-services.html" },
+      BOOK,
+    ],
+  },
+  "cybersecurity-certification-program": {
+    slug: "cybersecurity-certification-program",
+    title: "Cybersecurity certification programme",
+    description: "Security+ and analyst-track preparation.",
+    eyebrow: "For institutes",
+    lede: "Security foundations through SOC analyst skills, aligned to Security+ style objectives with hands-on labs and mock tests.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Certification stages",
+        items: [
+          { title: "IT & network basics", body: "The ground every analyst stands on." },
+          { title: "Threats & crypto", body: "Attack types and cryptographic controls." },
+          { title: "OWASP & AppSec", body: "Web risks with lab exploitation and fixes." },
+          { title: "SOC operations", body: "SIEM triage and escalation drills." },
+          { title: "GRC basics", body: "Risk, policy and compliance vocabulary." },
+          { title: "Mock exams", body: "Readiness scoring and revision plans." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Cybersecurity Training", href: "cybersecurity-training.html" },
+      { label: "Cybersecurity (service)", href: "cybersecurity.html" },
+      { label: "QA Career Programme", href: "software-testing-career-program.html" },
+      BOOK,
+    ],
+  },
+  "software-testing-career-program": {
+    slug: "software-testing-career-program",
+    title: "Software testing & QA career programme",
+    description: "From manual testing to automation engineer.",
+    eyebrow: "For institutes",
+    lede: "A complete career path: manual craft, API testing, Playwright automation and CI, ending with an interview-ready portfolio.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Programme stages",
+        items: [
+          { title: "Testing foundations", body: "Cases, techniques and defect craft." },
+          { title: "Agile & tools", body: "Jira, test management and traceability." },
+          { title: "API testing", body: "Postman to automation-ready contracts." },
+          { title: "Playwright", body: "A full UI suite built in the course." },
+          { title: "CI & reporting", body: "Green pipelines and quality dashboards." },
+          { title: "Career launch", body: "Resume, mocks and referral pipeline." },
+        ],
+      },
+      { kind: "faqs", items: TRACK_FAQS },
+    ],
+    related: [
+      { label: "Testing Training", href: "software-testing-training.html" },
+      { label: "QA (service)", href: "qa-test-automation.html" },
+      { label: "Placement Training", href: "placement-training.html" },
+      BOOK,
+    ],
+  },
+  "hackathons-internships": {
+    slug: "hackathons-internships",
+    title: "Hackathons, live projects & internships",
+    description: "Events and internships that surface talent.",
+    eyebrow: "For institutes",
+    lede: "Theme hackathons judged by engineers, live industry projects for credit, and structured internships with mentor reviews.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "Formats",
+        items: [
+          { title: "Hackathons", body: "24-48 hour builds with engineer judges." },
+          { title: "Live projects", body: "Real briefs scoped for semester timelines." },
+          { title: "Internships", body: "Remote and on-site cohorts with reviews." },
+          { title: "Mentor network", body: "Practising engineers as project mentors." },
+          { title: "Hiring linkage", body: "Top performers routed to employer pipelines." },
+          { title: "IP clarity", body: "Ownership terms agreed before projects start." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "Who owns hackathon IP?", a: "Students, unless a sponsored brief states otherwise in writing beforehand." },
+          { q: "Do internships convert to jobs?", a: "Top performers enter Hire-Train-Deploy and client pipelines." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Readiness Bootcamp", href: "industry-readiness-bootcamp.html" },
+      { label: "Hire-Train-Deploy", href: "campus-hiring.html" },
+      { label: "Trainings for institutes", href: "training-for-institutes.html" },
+      BOOK,
+    ],
+  },
+  "centre-of-excellence": {
+    slug: "centre-of-excellence",
+    title: "Centre of excellence & lab setup",
+    description: "CoE design, labs and mentor networks.",
+    eyebrow: "For institutes",
+    lede: "AI, cloud or full-stack Centres of Excellence: lab design, curriculum, mentor networks and yearly outcome reviews.",
+    blocks: [
+      {
+        kind: "scope",
+        title: "CoE components",
+        items: [
+          { title: "Lab design", body: "Hardware, cloud credits and software stacks." },
+          { title: "Curriculum", body: "Year-wise learning paths with projects." },
+          { title: "Mentors", body: "Industry mentors with scheduled reviews." },
+          { title: "Showcase", body: "Annual demo day and competition entries." },
+          { title: "Research support", body: "Paper and patent guidance where apt." },
+          { title: "Outcome reviews", body: "Yearly scorecards against agreed metrics." },
+        ],
+      },
+      {
+        kind: "faqs",
+        items: [
+          { q: "What does a CoE cost?", a: "Scoped per lab and track. Share your space and goals for a written proposal." },
+          { q: "How long to become self-sustaining?", a: "Typically two academic years with FDP and co-delivery built in." },
+        ],
+      },
+    ],
+    related: [
+      { label: "Faculty Development", href: "faculty-development-programs.html" },
+      { label: "NEP Credit Courses", href: "nep-credit-courses.html" },
+      { label: "Trainings for institutes", href: "training-for-institutes.html" },
+      BOOK,
+    ],
+  },
+};
