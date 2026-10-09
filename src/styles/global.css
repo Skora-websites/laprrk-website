@@ -460,9 +460,9 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Pulled up behind the sticky glass header so the navbar
+  /* Pulled up behind the sticky pill header so the navbar
      floats half-over the hero, full-bleed to the top. */
-  margin-top: -72px;
+  margin-top: -68px;
   /* Full-bleed top: slide under the floating navbar pill so it overlaps
      the hero, with equal padding compensation so content never shifts. */
   margin-top: -96px;
@@ -531,7 +531,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: clamp(32px, 5vw, 72px);
   flex: 1;
-  padding-top: calc(clamp(56px, 7vw, 96px) + 72px);
+  padding-top: calc(clamp(56px, 7vw, 96px) + 68px);
   padding-bottom: clamp(96px, 10vw, 130px);
 }
 
@@ -1927,7 +1927,7 @@ h1, h2, h3, h4 {
 .page-hero-inner {
   position: relative;
   z-index: 1;
-  padding-top: calc(clamp(56px, 7vw, 96px) + 72px);
+  padding-top: calc(clamp(56px, 7vw, 96px) + 68px);
   padding-bottom: clamp(72px, 8vw, 110px);
   display: grid;
   gap: 22px;

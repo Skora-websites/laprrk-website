@@ -241,14 +241,16 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const headRef = useRef<HTMLElement>(null);
 
-  /* Glass intensifies + height shrinks subtly after 40px scroll (ScrollTrigger, no listeners) */
+  /* Glass intensifies + pill tightens subtly after 40px scroll (ScrollTrigger, no listeners) */
   useGsapContext(() => {
     const el = headRef.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    gsap.to(el, {
-      paddingTop: 8,
-      paddingBottom: 8,
+    const pill = el.querySelector("[data-pill]");
+    if (!pill) return;
+    gsap.to(pill, {
+      paddingTop: 6,
+      paddingBottom: 6,
       ease: "none",
       scrollTrigger: { start: 40, end: 120, scrub: true },
     });
@@ -275,21 +277,35 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
       <Topbar />
       <header
         ref={headRef}
-        className="glass-strong"
         style={{
           position: "sticky",
           top: 8,
           zIndex: 50,
-          borderRadius: 20,
-          margin: "8px clamp(12px, 3vw, 32px) 0",
-          background: "color-mix(in srgb, var(--surface) 86%, transparent)",
-          backdropFilter: "blur(24px) saturate(170%)",
-          WebkitBackdropFilter: "blur(24px) saturate(170%)",
-          boxShadow: "0 16px 40px -18px rgba(76,62,170,.3), inset 0 1px 0 var(--glass-border)",
-          border: "1px solid var(--line)",
+          margin: 0,
+          padding: "8px clamp(12px,3vw,32px) 0",
+          background: "transparent",
         }}
       >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "12px clamp(16px,4vw,36px)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
+        <div
+          data-pill
+          className="glass-strong"
+          style={{
+            maxWidth: 1200,
+            width: "100%",
+            margin: "0 auto",
+            padding: "10px 10px 10px clamp(16px,2vw,24px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 16,
+            borderRadius: 999,
+            background: "color-mix(in srgb, var(--surface) 86%, transparent)",
+            backdropFilter: "blur(24px) saturate(170%)",
+            WebkitBackdropFilter: "blur(24px) saturate(170%)",
+            boxShadow: "0 16px 40px -18px rgba(76,62,170,.3), inset 0 1px 0 var(--glass-border)",
+            border: "1px solid var(--line)",
+          }}
+        >
           <Brand />
           <nav aria-label="Main" style={{ display: "flex", alignItems: "center", gap: 2 }} className="site-nav">
             {MEGA.map((item) => (
