@@ -1232,7 +1232,7 @@ a:hover .tn-arrow {
   position: absolute;
   bottom: 12%;
   left: 50%;
-  width: 120%;
+  width: 108%;
   transform: translateX(-50%) rotate(-9deg);
   overflow: hidden;
   border-radius: 999px;
