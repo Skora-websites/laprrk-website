@@ -10,13 +10,13 @@ export function Brand({ onInk = false }: { onInk?: boolean }) {
   return (
     <a href="index.html" aria-label="Laprrk Technology Solutions home" style={{ display: "inline-flex", alignItems: "center", gap: 12, textDecoration: "none", color: "inherit" }}>
       <svg viewBox="0 0 40 40" width={38} height={38} aria-hidden="true">
-        <rect width="40" height="40" rx="12" fill={onInk ? "#1a1b4d" : "#14153d"} stroke={onInk ? "rgba(167,139,250,0.4)" : "none"} strokeWidth={onInk ? 1 : 0} />
-        <path d="M14 10.5v19h13.5" stroke="#a78bfa" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="27.2" cy="13.4" r="3.3" fill="#8b5cf6" />
+        <rect width="40" height="40" rx="12" fill={onInk ? "#292524" : "#1c1917"} stroke={onInk ? "rgba(52,211,153,0.4)" : "none"} strokeWidth={onInk ? 1 : 0} />
+        <path d="M14 10.5v19h13.5" stroke="#0e7a5f" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="27.2" cy="13.4" r="3.3" fill="#0e7a5f" />
       </svg>
       <span style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: "-0.03em", lineHeight: 1 }}>
         Laprrk
-        <small className="mono" style={{ display: "block", fontWeight: 400, fontSize: 9.5, letterSpacing: "0.16em", textTransform: "uppercase", color: onInk ? "#a5a2c5" : "var(--text-mute)", marginTop: 4 }}>
+        <small className="mono" style={{ display: "block", fontWeight: 400, fontSize: 9.5, letterSpacing: "0.16em", textTransform: "uppercase", color: onInk ? "#d6d3d1" : "var(--text-mute)", marginTop: 4 }}>
           Technology Solutions LLP
         </small>
       </span>
@@ -47,8 +47,8 @@ function Dot({ live }: { live: boolean }) {
         borderRadius: "50%",
         flex: "none",
         display: "inline-block",
-        background: live ? "#a78bfa" : "var(--text-mute)",
-        boxShadow: live ? "0 0 0 3px rgba(167,139,250,.22), 0 0 10px rgba(167,139,250,.8)" : "none",
+        background: live ? "var(--accent)" : "var(--text-mute)",
+        boxShadow: live ? "0 0 0 3px var(--accent-soft), 0 0 10px var(--accent-soft)" : "none",
       }}
     />
   );
@@ -59,14 +59,14 @@ function Dot({ live }: { live: boolean }) {
 function Topbar() {
   const c = useOfficeClocks();
   return (
-    <div style={{ background: "#0c0d2b", color: "#a5a2c5", borderBottom: "1px solid rgba(167,139,250,.16)", fontSize: 13, position: "relative", zIndex: 60 }}>
+    <div style={{ background: "#1c1917", color: "#d6d3d1", borderBottom: "1px solid rgba(214,211,209,.16)", fontSize: 13, position: "relative", zIndex: 60 }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "8px clamp(16px,4vw,36px)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
         <div className="mono" style={{ display: "flex", gap: 18, alignItems: "center", fontSize: 12, flexWrap: "wrap" }}>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, whiteSpace: "nowrap" }}>
-            <Dot live={c.istOpen} /> Greater Noida <b style={{ color: "#f1effc", fontWeight: 500 }}>{c.ist}</b> IST
+            <Dot live={c.istOpen} /> Greater Noida <b style={{ color: "#fafaf9", fontWeight: 500 }}>{c.ist}</b> IST
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, whiteSpace: "nowrap" }}>
-            <Dot live={c.usOpen} /> Louisville <b style={{ color: "#f1effc", fontWeight: 500 }}>{c.us}</b> ET
+            <Dot live={c.usOpen} /> Louisville <b style={{ color: "#fafaf9", fontWeight: 500 }}>{c.us}</b> ET
           </span>
         </div>
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }} className="topbar-links">

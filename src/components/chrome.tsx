@@ -41,7 +41,7 @@ export function SectionHead({
           {eyebrow ? (
             <p
               className="lumina-eyebrow"
-              style={dark ? { background: "rgba(124,92,255,.16)", borderColor: "rgba(167,139,250,.4)", color: "#c4b5fd" } : undefined}
+              style={dark ? { background: "rgba(52,211,153,.13)", borderColor: "rgba(52,211,153,.4)", color: "#6ee7b7" } : undefined}
             >
               {eyebrow}
             </p>
@@ -50,11 +50,11 @@ export function SectionHead({
             {title}
           </h2>
           {lede ? (
-            <p className="lumina-lede" style={dark ? { color: "#b9b7d4" } : undefined}>{lede}</p>
+            <p className="lumina-lede" style={dark ? { color: "#d6d3d1" } : undefined}>{lede}</p>
           ) : null}
         </div>
         {link ? (
-          <a className="lumina-link" href={link.href} style={dark ? { color: "#c4b5fd" } : undefined}>
+          <a className="lumina-link" href={link.href} style={dark ? { color: "#6ee7b7" } : undefined}>
             {link.label} <span aria-hidden="true">→</span>
           </a>
         ) : null}

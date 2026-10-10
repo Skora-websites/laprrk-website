@@ -57,7 +57,7 @@ export default function DesignPreview() {
         >
           <Reveal y={28} stagger={0.1}>
             <div style={{ display: "grid", gap: 24 }}>
-              <span className="mono" style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#c4b5fd" }}>
+              <span className="mono" style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#0b654f" }}>
                 Design system
               </span>
               <h1 style={{ fontSize: "clamp(2.4rem,5vw,4.2rem)", letterSpacing: "-0.035em", lineHeight: 1.05 }}>
@@ -87,13 +87,13 @@ export default function DesignPreview() {
                       justifyContent: "space-between",
                       alignItems: "center",
                       padding: "14px 16px",
-                      border: "1px solid rgba(167,139,250,0.2)",
+                      border: "1px solid rgba(14,122,95,.3)",
                       borderRadius: 10,
                       background: "rgba(255,255,255,0.03)",
                     }}
                   >
                     <b style={{ fontSize: 15 }}>{s}</b>
-                    <span className="mono" style={{ fontSize: 11, color: "#c4b5fd" }}>Live</span>
+                    <span className="mono" style={{ fontSize: 11, color: "#0b654f" }}>Live</span>
                   </div>
                 ))}
               </div>
@@ -178,7 +178,7 @@ export default function DesignPreview() {
             <span className="mono" style={{ fontSize: 11.5, color: "#b9b7d4", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Count-up demo
             </span>
-            <div className="mono" style={{ fontSize: 44, fontWeight: 500, color: "#c4b5fd" }}>
+            <div className="mono" style={{ fontSize: 44, fontWeight: 500, color: "#0b654f" }}>
               <CountUp value={500} suffix="+" />
             </div>
             <span style={{ fontSize: 14, color: "#b9b7d4" }}>Professionals trained, counted once on view</span>

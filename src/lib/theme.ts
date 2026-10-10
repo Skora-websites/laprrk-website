@@ -14,7 +14,7 @@ function setTheme(t: Theme) {
   current = t;
   document.documentElement.setAttribute("data-theme", t);
   try {
-    localStorage.setItem("theme", t);
+    localStorage.setItem("laprrk-theme", t);
   } catch {
     /* private mode */
   }

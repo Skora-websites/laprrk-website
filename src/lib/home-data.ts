@@ -8,7 +8,7 @@ export const HERO = {
     em: "one partner",
     after: ".",
   },
-  lede: "Software and AI engineering, IT hiring, and corporate training from teams in India and the USA.",
+  lede: "We build production software and AI systems, place screened engineers in 5 to 7 business days, and run hands-on training with about 70% lab time. Delivery from India, client hours covered from the USA.",
   ctaPrimary: { label: "Book a free consultation", href: "contact.html" },
   ctaSecondary: { label: "Explore services", href: "#services" },
   meta: [
@@ -21,13 +21,13 @@ export const HERO = {
 export const CONSOLE_ROWS = [
   {
     title: "IT Services",
-    sub: "17 services · two-week sprints, a demo every sprint",
+    sub: "17 services · two-week sprints with a working demo each sprint",
     tag: "Build",
     href: "it-services.html",
   },
   {
     title: "Hiring Consultation",
-    sub: "Screened shortlist in 5-7 business days",
+    sub: "Engineer-screened shortlist in 5 to 7 business days",
     tag: "Hire",
     href: "hiring-consultation.html",
   },
@@ -35,7 +35,7 @@ export const CONSOLE_ROWS = [
 
 export const CONSOLE_TRAINING = {
   title: "Training",
-  sub: "Two practices, one standard of quality",
+  sub: "Corporate tracks and institute programmes, one delivery standard",
   tag: "Upskill",
   href: "corporate-training.html",
   subs: [
@@ -55,15 +55,15 @@ export const MARQUEE = [
 ];
 
 export const STATS = [
-  { value: 2019, suffix: "", label: "Founded, with offices in India and the USA" },
-  { value: 50, suffix: "+", label: "Clients served across India, USA and beyond" },
-  { value: 200, suffix: "+", label: "IT professionals placed with client companies" },
-  { value: 500, suffix: "+", label: "Professionals trained in our programmes" },
+  { value: 2019, suffix: "", label: "Operating since, delivery from Greater Noida and Louisville" },
+  { value: 50, suffix: "+", label: "Client engagements across India and the USA" },
+  { value: 200, suffix: "+", label: "Engineers placed after technical screening" },
+  { value: 500, suffix: "+", label: "Professionals trained in live, lab-based batches" },
 ];
 
 export const SERVICES_HEAD = {
   title: "Three practices. One team that works as yours.",
-  lede: "Start with one service and add others as you grow. Every service has its own page with scope, process, tools and answers.",
+  lede: "Start with one service and add others as you grow. Each service page lists scope, process, tools and direct answers.",
 };
 
 export const DIVISIONS = [
@@ -71,7 +71,7 @@ export const DIVISIONS = [
     title: "IT Services",
     href: "it-services.html",
     num: "17 services",
-    body: "Product engineering, generative and agentic AI, data, cloud, DevOps, QA automation, security and enterprise applications.",
+    body: "Product engineering, applied GenAI and agentic AI, data platforms, cloud migration, DevOps, QA automation, security reviews and enterprise apps.",
     subs: [
       { label: "Custom Software Development", href: "custom-software-development.html" },
       { label: "Web Application Development", href: "web-application-development.html" },
@@ -88,7 +88,7 @@ export const DIVISIONS = [
     title: "Hiring Consultation",
     href: "hiring-consultation.html",
     num: "10 services",
-    body: "Permanent and contract hiring, staff augmentation, RPO, executive search, campus hiring and GCC team setup in India and the USA.",
+    body: "Permanent and contract hiring, staff augmentation, RPO, executive search, campus hiring and GCC setup, screened by practising engineers.",
     subs: [
       { label: "All hiring services", href: "hiring-services.html" },
       { label: "Permanent IT Recruitment", href: "permanent-it-recruitment.html" },
@@ -107,7 +107,7 @@ export const TRAINING_DIVISION = {
   title: "Training",
   href: "corporate-training.html",
   num: "18 tracks · 10 programmes",
-  body: "Live, hands-on programmes for IT companies upskilling their teams, and for colleges and universities preparing faculty and students for industry.",
+  body: "Live, lab-based programmes: role-based upskilling for company teams, and faculty development plus student readiness for colleges.",
   groups: [
     {
       head: "For IT corporates",
@@ -139,21 +139,21 @@ export const TRAINING_DIVISION = {
 
 export const TECH_HEAD = {
   title: "Current technology, applied where it pays off",
-  lede: "We invest in what companies are adopting today, and we are honest about when a simpler option will do.",
+  lede: "We track what companies actually adopt, and we say plainly when a simpler stack costs less and ships faster.",
 };
 
 export const TECH_CARDS = [
-  { title: "Agentic AI & MCP", href: "agentic-ai-automation.html", body: "Agents that act across CRM, ERP and ticketing through Model Context Protocol, with human approval where it matters." },
-  { title: "Testing AI systems", href: "qa-test-automation.html", body: "Evaluation suites, red-teaming and regression sets for LLM apps, from a team rooted in QA automation." },
-  { title: "The AI-ready lakehouse", href: "data-engineering-analytics.html", body: "Databricks, Snowflake and Microsoft Fabric platforms that feed both dashboards and AI." },
+  { title: "Agentic AI & MCP", href: "agentic-ai-automation.html", body: "Agents that act across CRM, ERP and ticketing through Model Context Protocol, with human approval on every consequential step." },
+  { title: "Testing AI systems", href: "qa-test-automation.html", body: "Eval suites, red-teaming and regression sets for LLM apps, run by a team that started in QA automation." },
+  { title: "The AI-ready lakehouse", href: "data-engineering-analytics.html", body: "Databricks, Snowflake and Microsoft Fabric builds that feed dashboards and retrieval pipelines from one governed store." },
   { title: "Platform engineering", href: "devops-devsecops.html", body: "Internal developer platforms, GitOps and golden paths so teams ship safely every day." },
-  { title: "GCC & India team setup", href: "gcc-hiring.html", body: "Leadership first, then a foundation team, then scale: a phased hiring roadmap for new centres." },
-  { title: "AI skills for every team", href: "generative-ai-training.html", body: "AI literacy for all employees and deep GenAI engineering for developers, built on your approved tools." },
+  { title: "GCC & India team setup", href: "gcc-hiring.html", body: "Site leader first, then a foundation team, then scale: a phased hiring plan for a new India centre." },
+  { title: "AI skills for every team", href: "generative-ai-training.html", body: "AI literacy for all staff and GenAI engineering depth for developers, taught on your approved tools." },
 ];
 
 export const SYNERGY_HEAD = {
   title: "Why one partner for all three works better",
-  lede: "The engineers who build your systems also screen your candidates and teach your teams, so standards stay consistent end to end.",
+  lede: "The engineers who build your systems screen your candidates and teach your teams, so quality stays consistent end to end.",
 };
 
 export const SYNERGY = [
@@ -185,8 +185,8 @@ export const WHY_CARDS = [
   { title: "India and USA presence", body: "Delivery from Greater Noida West and client support from Louisville, Kentucky, with working hours that overlap yours." },
   { title: "Confidential by default", body: "NDA before detailed discussions, work in systems you own, role-based access with MFA, and access removed at exit." },
   { title: "Senior people on your work", body: "Experienced engineers, recruiters and trainers lead every engagement, not just the sales call." },
-  { title: "Transparent reporting", body: "Sprint demos, weekly hiring pipelines and training impact reports, so progress is always visible." },
-  { title: "Clear, fair pricing", body: "A written proposal before any commitment, with fixed, monthly or per-hire options and no hidden charges." },
+  { title: "Transparent reporting", body: "Sprint demos, weekly hiring pipelines and pre/post training scores, so progress stays visible." },
+  { title: "Clear, fair pricing", body: "A written proposal before any commitment, with fixed, monthly or per-hire pricing and no hidden charges." },
   { title: "One accountable partner", body: "Build, hire and train under one roof, with one relationship manager who knows your business." },
 ];
 
@@ -291,7 +291,7 @@ export const FAQS = [
 
 export const CTA = {
   title: "Tell us what you need. We reply within one business day.",
-  lede: "Share your requirement and we will set up a free 30-minute consultation with the right specialist, followed by a written proposal within 48 hours.",
+  lede: "Share your requirement and we set up a free 30-minute call with the right specialist, then send a written proposal within 48 hours.",
   primary: { label: "Book a free consultation", href: "contact.html" },
   wa: "Hi Laprrk, I would like a free consultation.",
   contacts: [

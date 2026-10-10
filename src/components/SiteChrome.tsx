@@ -24,7 +24,7 @@ export function SiteDrawer({ open, onClose }: { open: boolean; onClose: () => vo
         background: "rgba(12,13,43,0.92)",
         backdropFilter: "blur(28px) saturate(150%)",
         WebkitBackdropFilter: "blur(28px) saturate(150%)",
-        color: "#f1effc",
+        color: "#fafaf9",
         padding: "16px clamp(16px,4vw,36px) 32px",
       }}
     >
@@ -43,13 +43,13 @@ export function SiteDrawer({ open, onClose }: { open: boolean; onClose: () => vo
         </button>
       </div>
       <nav aria-label="Mobile">
-        <a href="index.html" style={{ display: "block", fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 26, fontWeight: 600, padding: "12px 0", borderBottom: "1px solid rgba(167,139,250,0.18)", textDecoration: "none", color: "inherit" }}>
+        <a href="index.html" style={{ display: "block", fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 26, fontWeight: 600, padding: "12px 0", borderBottom: "1px solid rgba(214,211,209,.16)", textDecoration: "none", color: "inherit" }}>
           Home
         </a>
         {DRAWER_GROUPS.map((g) => {
           const isOpen = openGroup === g.label;
           return (
-            <div key={g.label} style={{ borderBottom: "1px solid rgba(167,139,250,0.18)" }}>
+            <div key={g.label} style={{ borderBottom: "1px solid rgba(214,211,209,.16)" }}>
               <button
                 type="button"
                 onClick={() => setOpenGroup(isOpen ? null : g.label)}
@@ -85,14 +85,14 @@ export function SiteDrawer({ open, onClose }: { open: boolean; onClose: () => vo
               >
                 {g.links.map((l, i) => (
                   <li key={`${l.href}-${i}`}>
-                    <a href={l.href} style={{ display: "block", padding: "8px 0", color: "#a5a2c5", textDecoration: "none", fontSize: 16 }}>{l.label}</a>
+                    <a href={l.href} style={{ display: "block", padding: "8px 0", color: "#d6d3d1", textDecoration: "none", fontSize: 16 }}>{l.label}</a>
                   </li>
                 ))}
               </ul>
             </div>
           );
         })}
-        <a href="about.html" style={{ display: "block", fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 26, fontWeight: 600, padding: "12px 0", borderBottom: "1px solid rgba(167,139,250,0.18)", textDecoration: "none", color: "inherit" }}>
+        <a href="about.html" style={{ display: "block", fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 26, fontWeight: 600, padding: "12px 0", borderBottom: "1px solid rgba(214,211,209,.16)", textDecoration: "none", color: "inherit" }}>
           About
         </a>
         <a href="contact.html" style={{ display: "block", fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 26, fontWeight: 600, padding: "12px 0", textDecoration: "none", color: "inherit" }}>
@@ -111,7 +111,7 @@ export function SiteDrawer({ open, onClose }: { open: boolean; onClose: () => vo
 export function SiteFooter() {
   const c = useOfficeClocks();
   return (
-    <footer style={{ background: "linear-gradient(180deg, #14153d, #0c0d2b)", color: "#a5a2c5", padding: "72px 0 32px", fontSize: 15, marginTop: 96, borderRadius: "clamp(24px,4vw,44px) clamp(24px,4vw,44px) 0 0" }}>
+    <footer style={{ background: "linear-gradient(180deg, #292524, #1c1917)", color: "#d6d3d1", padding: "72px 0 32px", fontSize: 15, marginTop: 96, borderRadius: "clamp(24px,4vw,44px) clamp(24px,4vw,44px) 0 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(16px,4vw,36px)" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.3fr repeat(4, 1fr)", gap: 36 }} className="foot-top-grid">
           <div style={{ display: "grid", gap: 18, alignContent: "start" }}>
@@ -125,7 +125,7 @@ export function SiteFooter() {
           </div>
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
-              <h4 className="mono" style={{ color: "#f1effc", fontSize: 11.5, fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 16 }}>
+              <h4 className="mono" style={{ color: "#fafaf9", fontSize: 11.5, fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 16 }}>
                 <a href={col.href} style={{ textDecoration: "none", color: "inherit" }}>{col.title}</a>
               </h4>
               <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 9 }}>
@@ -144,25 +144,25 @@ export function SiteFooter() {
           @media (max-width: 420px)  { .foot-top-grid { grid-template-columns: 1fr !important; } }
         `}</style>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 18, marginTop: 52, paddingTop: 32, borderTop: "1px solid rgba(167,139,250,.18)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 18, marginTop: 52, paddingTop: 32, borderTop: "1px solid rgba(214,211,209,.16)" }}>
           <div className="glass-ink" style={{ padding: 20, display: "grid", gap: 6, fontSize: 14.5, lineHeight: 1.55, borderRadius: 18 }}>
             <b style={{ color: "#fff", fontWeight: 600 }}>India office</b>
             <span>Office No. 605, 6th Floor, Raksha Addela Mart, Gaur City 2, Greater Noida West, Uttar Pradesh 201318, India</span>
-            <a href={CONTACT.phoneInHref} style={{ color: "#c4b5fd", textDecoration: "none" }}>{CONTACT.phoneIn}</a>
+            <a href={CONTACT.phoneInHref} style={{ color: "#6ee7b7", textDecoration: "none" }}>{CONTACT.phoneIn}</a>
           </div>
           <div className="glass-ink" style={{ padding: 20, display: "grid", gap: 6, fontSize: 14.5, lineHeight: 1.55, borderRadius: 18 }}>
             <b style={{ color: "#fff", fontWeight: 600 }}>USA office</b>
             <span>Louisville, Kentucky, United States</span>
-            <a href={CONTACT.phoneUsHref} style={{ color: "#c4b5fd", textDecoration: "none" }}>{CONTACT.phoneUs}</a>
+            <a href={CONTACT.phoneUsHref} style={{ color: "#6ee7b7", textDecoration: "none" }}>{CONTACT.phoneUs}</a>
           </div>
           <div className="glass-ink" style={{ padding: 20, display: "grid", gap: 6, fontSize: 14.5, lineHeight: 1.55, borderRadius: 18 }}>
             <b style={{ color: "#fff", fontWeight: 600 }}>Email</b>
-            <a href={`mailto:${CONTACT.email}`} style={{ color: "#c4b5fd", textDecoration: "none" }}>{CONTACT.email}</a>
+            <a href={`mailto:${CONTACT.email}`} style={{ color: "#6ee7b7", textDecoration: "none" }}>{CONTACT.email}</a>
             <span>Mon-Sat, 10:00-19:00 IST · Mon-Fri, 9:00-17:00 ET</span>
           </div>
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 14, marginTop: 40, paddingTop: 24, borderTop: "1px solid rgba(167,139,250,.18)", fontSize: 13.5 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 14, marginTop: 40, paddingTop: 24, borderTop: "1px solid rgba(214,211,209,.16)", fontSize: 13.5 }}>
           <span>&copy; <span id="year">2026</span> Laprrk Technology Solutions LLP. GSTIN 09AAHFL0399D1ZU. MSME registered.</span>
           <nav aria-label="Legal" style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
             <a href="privacy-policy.html" style={{ color: "inherit", textDecoration: "none" }}>Privacy</a>
@@ -171,7 +171,7 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="mono" style={{ marginTop: 16, fontSize: 12, display: "inline-flex", alignItems: "center", gap: 8 }}>
-          <i aria-hidden="true" style={{ width: 7, height: 7, borderRadius: "50%", background: c.istOpen || c.usOpen ? "#a78bfa" : "#4a4a6e", display: "inline-block" }} />
+          <i aria-hidden="true" style={{ width: 7, height: 7, borderRadius: "50%", background: c.istOpen || c.usOpen ? "#34d399" : "#57504a", display: "inline-block" }} />
           {c.status}
         </div>
       </div>
