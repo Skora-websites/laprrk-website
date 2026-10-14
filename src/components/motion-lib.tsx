@@ -123,21 +123,22 @@ export function StackCards({
     // produces very long scroll jail.
     if (!window.matchMedia("(min-width: 992px)").matches) return;
 
-    const cards = gsap.utils.toArray<HTMLElement>("[data-stack-card]", root);
-    if (cards.length < 2) return;
+     const cards = gsap.utils.toArray<HTMLElement>("[data-stack-card]", root);
+     if (cards.length < 2) return;
 
-    // The last card is the reference point every earlier card scales toward.
-    const lastStart = ScrollTrigger.create({
-      trigger: cards[cards.length - 1],
-      start,
-    }).start;
+     // The last card is the reference point every earlier card scales toward.
+     const lastCard = cards[cards.length - 1];
+     const lastStart = ScrollTrigger.create({
+       trigger: lastCard,
+       start,
+     }).start;
 
-    cards.forEach((card, index) => {
-      const scaleDown = gsap.to(card, {
-        scale: 1 - (cards.length - index) * scaleStep,
-        transformOrigin: `50% ${lastStart}px`,
-        ease: "none",
-      });
+     cards.forEach((card, index) => {
+       const scaleDown = gsap.to(card, {
+         scale: 1 - (cards.length - index) * scaleStep,
+         transformOrigin: `50% ${lastStart - card.offsetTop}px`,
+         ease: "none",
+       });
 
       ScrollTrigger.create({
         trigger: card,

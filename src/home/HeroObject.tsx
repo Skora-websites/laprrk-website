@@ -157,8 +157,8 @@ export function HeroObject({ className = "" }: { className?: string }) {
         })
         .fromTo(
           tumble.current,
-          { rotationX: 10, y: 40, scale: 0.94 },
-          { rotationX: -14, y: -70, scale: 1.06, ease: "none" },
+          { rotationX: 2, y: 10, scale: 0.99 },
+          { rotationX: -3, y: -15, scale: 1.01, ease: "none" },
         );
     }
   }, []);
