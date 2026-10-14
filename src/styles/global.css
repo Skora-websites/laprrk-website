@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 /* Bind Tailwind dark: variant to the manual toggle, not just the OS */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -542,20 +542,15 @@ h1, h2, h3, h4 {
      the hero, with equal padding compensation so content never shifts. */
   margin-top: -96px;
   padding-top: 96px;
-  background:
-    radial-gradient(920px 520px at 76% 4%, rgba(14, 122, 95, 0.13), transparent 60%),
-    radial-gradient(720px 480px at 4% 94%, rgba(14, 122, 95, 0.1), transparent 60%),
-    var(--base);
+  /* The painted studio ground lives in HeroBackdrop (hx-* layers); the
+     base colour here is only the fallback under it. */
+  background: var(--base);
   color: var(--text);
   border-radius: 0 0 clamp(24px, 4vw, 44px) clamp(24px, 4vw, 44px);
 }
 
 [data-theme="dark"] .hero {
-  background:
-    radial-gradient(1000px 520px at 78% -8%, rgba(14, 122, 95, 0.35), transparent 60%),
-    radial-gradient(760px 480px at 12% 20%, rgba(52, 211, 153, 0.14), transparent 58%),
-    radial-gradient(600px 420px at 50% 110%, rgba(14, 122, 95, 0.16), transparent 60%),
-    linear-gradient(180deg, #292524 0%, #1c1917 72%);
+  background: #1c1917;
   color: #fafaf9;
 }
 
@@ -582,10 +577,322 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 
-/* ---------- Hero: capability stack (right column focal composition) ---------- */
+/* ---------- Hero backdrop: a textural 3D studio ground (HRCM port) ----------
+   Volumetric washes, drifting blooms, six light panes sweeping around a hub
+   (the windmill), film grain, a vignette, a perspective floor plane and an
+   atmospheric haze. Recoloured to the stone + emerald system. All of it is
+   aria-hidden decoration behind the hero copy. ---------- */
 
-/* The right column holds the ambient glow plus the two glass objects. */
-.tn-visual {
+:root {
+  --hx-tint-a: rgba(14, 122, 95, 0.13);
+  --hx-tint-b: rgba(52, 211, 153, 0.12);
+  --hx-tint-c: rgba(214, 206, 197, 0.55);
+}
+
+[data-theme="dark"] {
+  --hx-tint-a: rgba(52, 211, 153, 0.15);
+  --hx-tint-b: rgba(110, 231, 183, 0.1);
+  --hx-tint-c: rgba(41, 37, 36, 0.6);
+}
+
+.hx-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* the base studio wash — layered radial light, per theme */
+.hx-stage {
+  position: absolute;
+  inset: 0;
+  background-color: var(--base);
+  background-image:
+    radial-gradient(72% 56% at 74% 4%, rgba(14, 122, 95, 0.09), transparent 62%),
+    radial-gradient(92% 82% at 50% 42%, rgba(214, 206, 197, 0.42), transparent 74%),
+    radial-gradient(66% 62% at 10% 94%, rgba(214, 206, 197, 0.4), transparent 68%),
+    radial-gradient(125% 112% at 50% 48%, rgba(28, 25, 23, 0) 52%, rgba(28, 25, 23, 0.05) 100%);
+}
+
+[data-theme="dark"] .hx-stage {
+  background-image:
+    radial-gradient(72% 56% at 74% 0%, rgba(52, 211, 153, 0.16), transparent 62%),
+    radial-gradient(92% 82% at 50% 42%, rgba(52, 211, 153, 0.06), transparent 74%),
+    radial-gradient(66% 62% at 10% 94%, rgba(14, 122, 95, 0.12), transparent 68%),
+    radial-gradient(125% 112% at 50% 48%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+/* atmospheric depth haze — pushes the far plane back */
+.hx-haze {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.26) 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(28, 25, 23, 0.04) 82%,
+    rgba(28, 25, 23, 0.09) 100%
+  );
+}
+
+[data-theme="dark"] .hx-haze {
+  background: linear-gradient(
+    180deg,
+    rgba(41, 37, 36, 0.22) 0%,
+    rgba(41, 37, 36, 0.05) 30%,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(0, 0, 0, 0.12) 82%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+}
+
+/* the 3D floor plane — converging depth lines drawn with gradients, tilting
+   back in perspective and fading toward the horizon */
+.hx-floor {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(14, 122, 95, 0.06) 42%,
+      rgba(14, 122, 95, 0.06) 42.5%,
+      transparent 43%,
+      transparent 58%,
+      rgba(14, 122, 95, 0.06) 58.5%,
+      rgba(14, 122, 95, 0.06) 59%,
+      transparent 59.5%,
+      transparent 74%,
+      rgba(14, 122, 95, 0.06) 74.5%,
+      rgba(14, 122, 95, 0.06) 75%,
+      transparent 75.5%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(14, 122, 95, 0.045) 52%,
+      rgba(14, 122, 95, 0.045) 52.5%,
+      transparent 53%,
+      transparent 62%,
+      rgba(14, 122, 95, 0.055) 62.5%,
+      rgba(14, 122, 95, 0.055) 63%,
+      transparent 63.5%,
+      transparent 74%,
+      rgba(14, 122, 95, 0.055) 74.5%,
+      rgba(14, 122, 95, 0.055) 75%,
+      transparent 75.5%,
+      transparent 86%,
+      rgba(14, 122, 95, 0.055) 86.5%,
+      rgba(14, 122, 95, 0.055) 87%,
+      transparent 87.5%
+    );
+  transform: perspective(700px) rotateX(32deg) translateY(28%) scale(1.3);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 78%, transparent 100%);
+}
+
+[data-theme="dark"] .hx-floor {
+  background-image:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(52, 211, 153, 0.08) 42%,
+      rgba(52, 211, 153, 0.08) 42.5%,
+      transparent 43%,
+      transparent 58%,
+      rgba(52, 211, 153, 0.08) 58.5%,
+      rgba(52, 211, 153, 0.08) 59%,
+      transparent 59.5%,
+      transparent 74%,
+      rgba(52, 211, 153, 0.08) 74.5%,
+      rgba(52, 211, 153, 0.08) 75%,
+      transparent 75.5%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(52, 211, 153, 0.06) 52%,
+      rgba(52, 211, 153, 0.06) 52.5%,
+      transparent 53%,
+      transparent 62%,
+      rgba(52, 211, 153, 0.07) 62.5%,
+      rgba(52, 211, 153, 0.07) 63%,
+      transparent 63.5%,
+      transparent 74%,
+      rgba(52, 211, 153, 0.07) 74.5%,
+      rgba(52, 211, 153, 0.07) 75%,
+      transparent 75.5%,
+      transparent 86%,
+      rgba(52, 211, 153, 0.07) 86.5%,
+      rgba(52, 211, 153, 0.07) 87%,
+      transparent 87.5%
+    );
+}
+
+/* drifting blooms — the light is alive, but barely (GSAP owns the drift) */
+.hx-bloom {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.hx-bloom-a {
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.16) 0%, rgba(52, 211, 153, 0) 68%);
+}
+
+.hx-bloom-b {
+  background: radial-gradient(circle, rgba(14, 122, 95, 0.14) 0%, rgba(14, 122, 95, 0) 68%);
+}
+
+.hx-bloom-c {
+  background: radial-gradient(circle, rgba(214, 206, 197, 0.45) 0%, rgba(214, 206, 197, 0) 70%);
+}
+
+[data-theme="dark"] .hx-bloom-a {
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.2) 0%, rgba(52, 211, 153, 0) 68%);
+}
+
+[data-theme="dark"] .hx-bloom-b {
+  background: radial-gradient(circle, rgba(14, 122, 95, 0.24) 0%, rgba(14, 122, 95, 0) 68%);
+}
+
+[data-theme="dark"] .hx-bloom-c {
+  background: radial-gradient(circle, rgba(87, 83, 78, 0.5) 0%, rgba(87, 83, 78, 0) 70%);
+}
+
+/* The windmill — the ground is a turning mill. Six blade panes sit 60°
+   apart around a hub; because they are all children of this spinning
+   parent, you see N distinct panes sweeping past constantly, so the hero
+   is never static. The rotation is linear and endless. */
+.hx-windmill {
+  position: absolute;
+  inset: -28%;
+  pointer-events: none;
+  transform-origin: 50% 42%;
+  animation: hx-spin 38s linear infinite;
+}
+
+.hx-blade {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 42%;
+  background: conic-gradient(
+    from -12deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--tint) 82%, transparent) 14deg,
+    var(--tint) 30deg,
+    var(--tint) 46deg,
+    color-mix(in srgb, var(--tint) 55%, transparent) 60deg,
+    transparent 76deg
+  );
+  filter: blur(16px);
+  /* each pane breathes on its own phase, so the mill has life */
+  animation: hx-flutter 14s ease-in-out infinite;
+}
+
+/* the hub — a soft core the panes sweep out of */
+.hx-hub {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  height: 22rem;
+  width: 22rem;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(52, 211, 153, 0.12) 42%,
+    rgba(52, 211, 153, 0) 72%
+  );
+  filter: blur(18px);
+}
+
+@keyframes hx-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hx-flutter {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* stagger each pane so the swell travels around the mill */
+.hx-windmill > .hx-blade:nth-child(1) {
+  animation-delay: 0s;
+}
+.hx-windmill > .hx-blade:nth-child(2) {
+  animation-delay: -2.3s;
+}
+.hx-windmill > .hx-blade:nth-child(3) {
+  animation-delay: -4.6s;
+}
+.hx-windmill > .hx-blade:nth-child(4) {
+  animation-delay: -6.9s;
+}
+.hx-windmill > .hx-blade:nth-child(5) {
+  animation-delay: -9.2s;
+}
+.hx-windmill > .hx-blade:nth-child(6) {
+  animation-delay: -11.5s;
+}
+
+/* film grain — keeps a gradient from reading as flat CSS */
+.hx-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* corner darkening — what makes the ground read as a photographed space */
+.hx-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    118% 102% at 50% 44%,
+    rgba(28, 25, 23, 0) 54%,
+    rgba(28, 25, 23, 0.14) 100%
+  );
+}
+
+[data-theme="dark"] .hx-vignette {
+  background: radial-gradient(118% 102% at 50% 44%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* the mill stops under reduced motion; the panes hold a static offset so
+   the hero still reads as a layered, lit surface */
+@media (prefers-reduced-motion: reduce) {
+  .hx-windmill,
+  .hx-blade,
+  .hx3d-pulse::after {
+    animation: none;
+  }
+}
+
+/* ---------- Hero: 3D glass delivery board (right column focal composition)
+   Ported from the HRCM redesign's HeroObject, driven by GSAP. The board is
+   real 3D: a scroll tumble group, a pointer-tilt group, a showcase-turn
+   group, and every content layer on its own translateZ. Deliberately no
+   backdrop-filter on the board itself — a filtered element flattens its
+   subtree and would destroy the internal Z-depth; the layered gradients,
+   rim light and specular sheen carry the glass read instead. ---------- */
+
+.hx3d-scene {
   position: relative;
   grid-column: 2;
   grid-row: 1;
@@ -593,203 +900,436 @@ h1, h2, h3, h4 {
   display: grid;
   justify-items: center;
   min-width: 0;
+  perspective: 1300px;
 }
 
-.tn-glow {
-  position: absolute;
-  inset: -12% -18%;
-  border-radius: 50%;
-  pointer-events: none;
-  background:
-    radial-gradient(closest-side, rgba(14, 122, 95, 0.22), rgba(14, 122, 95, 0.08) 45%, transparent 72%),
-    radial-gradient(closest-side at 70% 30%, rgba(52, 211, 153, 0.12), transparent 70%);
-  filter: blur(28px);
-}
-
-/* The panel: one object, not a scatter of motifs. */
-.tn-stack {
-  position: relative;
-  z-index: 1;
+.hx3d-tumble,
+.hx3d-tilt,
+.hx3d-spin {
   width: 100%;
-  max-width: 420px;
-  display: grid;
-  gap: 10px;
-  padding: 20px;
-  border-radius: clamp(22px, 2.6vw, 30px);
-  background:
-    linear-gradient(155deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.72));
-  border: 1px solid var(--glass-border);
-  box-shadow:
-    0 32px 70px -32px rgba(28, 25, 23, 0.3),
-    0 2px 0 rgba(255, 255, 255, 0.7) inset;
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  /* Depth: rows recede up the panel, so the stack reads as layered planes. */
   transform-style: preserve-3d;
 }
 
-[data-theme="dark"] .tn-stack {
-  background:
-    linear-gradient(155deg, rgba(41, 37, 36, 0.94), rgba(28, 25, 23, 0.72));
+.hx3d-tumble {
+  position: relative;
+  max-width: 25rem;
 }
 
-/* Each row is a link: the link styling lives here so the hover affordance
-   is on the interactive element, not a wrapper. */
-.tn-stack-row {
+/* coloured refraction sitting behind the glass */
+.hx3d-refraction {
+  position: absolute;
+  inset: -1.5rem;
+  border-radius: 44px;
+  opacity: 0.7;
+  filter: blur(24px);
+  transform: translateZ(-60px);
+  pointer-events: none;
+  background:
+    radial-gradient(60% 60% at 20% 20%, rgba(14, 122, 95, 0.14), transparent 70%),
+    radial-gradient(50% 50% at 85% 30%, rgba(52, 211, 153, 0.18), transparent 70%),
+    radial-gradient(60% 60% at 60% 95%, rgba(214, 206, 197, 0.4), transparent 70%);
+}
+
+/* the glass body — the rim gradient stands in for the glass edge */
+.hx3d-board {
+  position: relative;
+  border-radius: 38px;
+  padding: 1.5px;
+  transform-style: preserve-3d;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 237, 232, 0.6) 34%,
+    rgba(214, 206, 197, 0.42) 56%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  box-shadow:
+    0 2px 6px rgba(28, 25, 23, 0.05),
+    0 30px 70px -28px rgba(28, 25, 23, 0.35),
+    0 70px 130px -60px rgba(14, 122, 95, 0.28);
+}
+
+[data-theme="dark"] .hx3d-board {
+  background: linear-gradient(
+    140deg,
+    rgba(250, 250, 249, 0.32) 0%,
+    rgba(87, 83, 78, 0.5) 38%,
+    rgba(41, 37, 36, 0.55) 60%,
+    rgba(214, 211, 209, 0.2) 100%
+  );
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    0 30px 70px -28px rgba(0, 0, 0, 0.6),
+    0 70px 130px -60px rgba(52, 211, 153, 0.3);
+}
+
+.hx3d-board-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 37px;
+  padding: 22px;
+  transform-style: preserve-3d;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(240, 237, 232, 0.78) 45%,
+    rgba(231, 226, 218, 0.85) 100%
+  );
+}
+
+[data-theme="dark"] .hx3d-board-inner {
+  background: linear-gradient(
+    150deg,
+    rgba(41, 37, 36, 0.92) 0%,
+    rgba(28, 25, 23, 0.82) 45%,
+    rgba(23, 20, 18, 0.9) 100%
+  );
+}
+
+/* specular streak — GSAP moves this with the pointer */
+.hx3d-sheen {
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  height: 190%;
+  width: 24px;
+  border-radius: 999px;
+  transform: rotate(-18deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+/* top gloss */
+.hx3d-gloss {
+  position: absolute;
+  inset: 0.5rem 0.5rem auto 0.5rem;
+  height: 50%;
+  border-radius: 0 0 60% 60%;
+  opacity: 0.6;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* deep watermark — sits furthest back inside the glass */
+.hx3d-mark {
+  position: absolute;
+  right: 12px;
+  top: 6px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(28, 25, 23, 0.07);
+  transform: translateZ(-30px);
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-theme="dark"] .hx3d-mark {
+  color: rgba(250, 250, 249, 0.08);
+}
+
+/* board header */
+.hx3d-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transform: translateZ(50px);
+}
+
+.hx3d-head-l {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.hx3d-pulse {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.hx3d-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: hx3d-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes hx3d-ping {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.hx3d-head-r {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* the practice rows — each row sits a little less deep than the last */
+.hx3d-rows {
+  position: relative;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  transform-style: preserve-3d;
+}
+
+.hx3d-row {
+  transform: translateZ(var(--z, 30px));
+}
+
+.hx3d-row a {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
-  padding: 16px 18px;
+  padding: 14px 16px;
   border-radius: 18px;
-  background: var(--base);
-  border: 1px solid var(--line);
+  border: 1px solid var(--glass-border);
+  background: var(--surface);
   text-decoration: none;
   color: inherit;
   box-shadow: 0 14px 30px -20px rgba(28, 25, 23, 0.28);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s,
-    border-color 0.35s;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s,
+    border-color 0.3s;
 }
 
-/* Each row sits slightly higher and smaller, so they overlap into a stack. */
-.tn-stack-row[data-layer="0"] {
-  transform: translateZ(0);
+[data-theme="dark"] .hx3d-row a {
+  background: rgba(41, 37, 36, 0.72);
 }
 
-.tn-stack-row[data-layer="1"] {
-  transform: translateY(-6px) scale(0.985);
-}
-
-.tn-stack-row[data-layer="2"] {
-  transform: translateY(-12px) scale(0.97);
-}
-
-.tn-stack-row:hover,
-.tn-stack-row:focus-visible {
-  transform: translateY(-6px) scale(1.012);
+.hx3d-row a:hover,
+.hx3d-row a:focus-visible {
+  transform: translateY(-3px);
   border-color: var(--accent);
-  box-shadow: 0 24px 46px -22px rgba(28, 25, 23, 0.38);
+  box-shadow: 0 22px 44px -22px rgba(28, 25, 23, 0.38);
 }
 
-.tn-stack-ic {
+.hx3d-row-ic {
   flex: none;
+  color: var(--accent-strong);
 }
 
-.tn-stack-text {
+[data-theme="dark"] .hx3d-row-ic {
+  color: var(--accent);
+}
+
+.hx3d-row-text {
   display: grid;
   gap: 3px;
   min-width: 0;
 }
 
-.tn-stack-k {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11.5px;
-  letter-spacing: 0.14em;
-  color: var(--accent-strong);
-  font-weight: 600;
-  flex: none;
-}
-
-.tn-stack-arrow {
-  font-size: 14px;
-  letter-spacing: 0;
-  color: var(--text-mute);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.tn-stack-row:hover .tn-stack-arrow {
-  transform: translateX(4px);
-  color: var(--accent-strong);
-}
-
-.tn-stack-t {
+.hx3d-row-text strong {
   font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-size: clamp(1.02rem, 1.4vw, 1.24rem);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
 }
 
-.tn-stack-s {
-  font-size: 13px;
-  color: var(--text-mute);
+.hx3d-row-text small {
+  font-size: 12.5px;
   line-height: 1.4;
+  color: var(--text-mute);
 }
 
-/* The base plate: the punchline and the one next step, as a link. */
-.tn-stack-core {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+.hx3d-row-k {
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
-  margin-top: 4px;
-  padding: 18px 20px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #0e7a5f, #0b654f 60%, #094c3d);
-  color: #ffffff;
-  text-decoration: none;
-  box-shadow: 0 20px 44px -22px rgba(11, 101, 79, 0.6);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+  gap: 10px;
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
 }
 
-.tn-stack-core:hover,
-.tn-stack-core:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 28px 56px -22px rgba(11, 101, 79, 0.7);
+[data-theme="dark"] .hx3d-row-k {
+  color: var(--accent);
 }
 
-.tn-stack-core-num {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(2.2rem, 3.2vw, 2.9rem);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+.hx3d-row-arrow {
+  font-size: 14px;
+  letter-spacing: 0;
+  color: var(--text-mute);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s;
 }
 
-.tn-stack-core-lab {
+.hx3d-row a:hover .hx3d-row-arrow {
+  transform: translateX(4px);
+  color: var(--accent-strong);
+}
+
+/* footer strip — the punchline, as a link */
+.hx3d-footer {
+  position: relative;
+  margin-top: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  padding: 13px 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0e7a5f, #0b654f 60%, #094c3d);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateZ(14px);
+  box-shadow: 0 20px 44px -22px rgba(11, 101, 79, 0.6);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+}
+
+.hx3d-footer:hover,
+.hx3d-footer:focus-visible {
+  transform: translateZ(14px) translateY(-3px);
+  box-shadow: 0 28px 56px -22px rgba(11, 101, 79, 0.7);
+}
+
+.hx3d-footer-l {
   font-size: 13.5px;
   line-height: 1.3;
   color: rgba(255, 255, 255, 0.86);
 }
 
-.tn-stack-core-cta {
-  font-size: 16px;
+.hx3d-footer-r {
+  font-size: 0.72rem;
   color: #ffffff;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
 }
 
-.tn-stack-core:hover .tn-stack-core-cta {
-  transform: translateX(5px);
+/* satellites — each at its own depth (outer), each floating on its own
+   phase (inner chip, animated by GSAP) */
+.hx3d-sat {
+  position: absolute;
+  transform: translateZ(var(--z, 120px));
+  transform-style: preserve-3d;
 }
 
-/* Hologram glow behind the console */
-.hero-stage {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+.hx3d-sat-a {
+  left: -0.75rem;
+  top: 1.5rem;
+}
+
+.hx3d-sat-b {
+  right: -0.75rem;
+  top: 5rem;
+}
+
+.hx3d-sat-c {
+  left: -0.5rem;
+  bottom: 3rem;
+}
+
+.hx3d-sat-d {
+  right: -0.5rem;
+  bottom: -0.5rem;
+}
+
+.hx3d-chip {
+  display: inline-flex;
   align-items: center;
-  gap: clamp(32px, 5vw, 72px);
-  flex: 1;
-  padding-top: calc(clamp(56px, 7vw, 96px) + 68px);
-  padding-bottom: clamp(96px, 10vw, 130px);
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  box-shadow: 0 10px 30px -12px rgba(28, 25, 23, 0.35);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
 }
 
-@media (max-width: 980px) {
-  .hero-stage {
-    grid-template-columns: 1fr;
+.hx3d-chip strong {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.hx3d-chip small {
+  font-size: 0.68rem;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* contact shadow — grounds the object in the light */
+.hx3d-shadow {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 50%;
+  height: 2.5rem;
+  width: 70%;
+  border-radius: 50%;
+  background: rgba(28, 25, 23, 0.12);
+  filter: blur(24px);
+  transform: translateX(-50%);
+}
+
+[data-theme="dark"] .hx3d-shadow {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 640px) {
+  .hx3d-sat-a {
+    left: -2rem;
+  }
+  .hx3d-sat-b {
+    right: -2rem;
+  }
+  .hx3d-sat-c {
+    left: -1.5rem;
+  }
+  .hx3d-sat-d {
+    right: -1.5rem;
   }
 }
 
-.hero-copy {
-  max-width: 660px;
+@media (min-width: 1100px) {
+  .hx3d-sat-a {
+    left: -3.5rem;
+  }
+  .hx3d-sat-b {
+    right: -3rem;
+  }
+  .hx3d-sat-c {
+    left: -2rem;
+  }
+  .hx3d-sat-d {
+    right: -2rem;
+  }
 }
+
 
 .eyebrow {
   display: inline-flex;
@@ -914,267 +1454,6 @@ h1, h2, h3, h4 {
   font-size: 17px;
 }
 
-/* ---------- Booking-style console (reference: stepper + fields + gradient CTA) ---------- */
-
-.hero-console {
-  perspective: 1200px;
-  position: relative;
-  z-index: 2;
-}
-
-.glass-console {
-  border-radius: 24px;
-  overflow: hidden;
-  background: rgba(20, 21, 61, 0.72);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
-  backdrop-filter: blur(28px) saturate(160%);
-  border: 1px solid rgba(14, 122, 95, 0.28);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 40px 90px -30px rgba(3, 4, 20, 0.8);
-}
-
-.console-bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 14px 18px;
-  border-bottom: 1px solid rgba(14, 122, 95, 0.16);
-}
-
-.console-bar .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(14, 122, 95, 0.25);
-}
-
-.console-bar .dot:first-child {
-  background: #34d399;
-  box-shadow: 0 0 10px rgba(14, 122, 95, 0.8);
-}
-
-.console-title {
-  margin-left: 8px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #b9b7d4;
-}
-
-.console-body {
-  padding: 20px;
-  display: grid;
-  gap: 12px;
-}
-
-/* Stepper echoing "Book an Appointment: 1 Service 2 Doctor 3 Date 4 Details" */
-.console-steps {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 4px;
-}
-
-.console-step {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: #b9b7d4;
-  white-space: nowrap;
-}
-
-.console-step i {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-style: normal;
-  font-size: 11px;
-  background: linear-gradient(135deg, #0e7a5f, #0b654f);
-  color: #fff;
-  flex: none;
-}
-
-.console-step.done i {
-  background: rgba(14, 122, 95, 0.2);
-  border: 1px solid rgba(14, 122, 95, 0.4);
-  color: #6ee7b7;
-}
-
-.console-step-sep {
-  flex: 1;
-  height: 1px;
-  background: rgba(14, 122, 95, 0.2);
-  min-width: 8px;
-}
-
-.console-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(14, 122, 95, 0.18);
-  background: rgba(255, 255, 255, 0.04);
-  text-decoration: none;
-  color: #fafaf9;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
-}
-
-.console-row:hover {
-  border-color: rgba(14, 122, 95, 0.55);
-  background: rgba(14, 122, 95, 0.12);
-  transform: translateX(4px);
-}
-
-.console-tag {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #6ee7b7;
-  border: 1px solid rgba(14, 122, 95, 0.4);
-  background: rgba(14, 122, 95, 0.12);
-  border-radius: 999px;
-  padding: 5px 10px;
-  flex: none;
-}
-
-.console-main {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.console-main strong {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 16px;
-  letter-spacing: -0.01em;
-}
-
-.console-main small,
-.console-mini small {
-  font-size: 13px;
-  color: #d6d3d1;
-}
-
-.console-arrow {
-  margin-left: auto;
-  color: #34d399;
-  transition: transform 0.2s;
-}
-
-.console-row:hover .console-arrow {
-  transform: translateX(3px);
-}
-
-.console-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.console-mini {
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px dashed rgba(14, 122, 95, 0.32);
-  text-decoration: none;
-  color: #fafaf9;
-  display: grid;
-  gap: 3px;
-  transition: border-color 0.2s, background 0.2s;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.console-mini:hover {
-  border-color: rgba(14, 122, 95, 0.6);
-  background: rgba(14, 122, 95, 0.1);
-}
-
-.console-mini strong {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 15px;
-}
-
-.console-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 4px;
-  padding: 15px 20px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0e7a5f, #0b654f);
-  color: #fff;
-  font-weight: 700;
-  font-size: 15.5px;
-  text-decoration: none;
-  box-shadow: 0 14px 30px -10px rgba(14, 122, 95, 0.7);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.console-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 36px -10px rgba(14, 122, 95, 0.8);
-}
-
-.console-clock {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding-top: 4px;
-}
-
-.console-clock small {
-  display: block;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #8f8cb0;
-}
-
-.console-clock strong {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 21px;
-  font-weight: 600;
-  color: #ffffff;
-  font-variant-numeric: tabular-nums;
-}
-
-.console-status {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 13px;
-  color: #d6d3d1;
-  padding-top: 2px;
-}
-
-.live-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4a4a6e;
-  flex: none;
-}
-
-.live-dot.on {
-  background: #34d399;
-  box-shadow: 0 0 0 3px rgba(14, 122, 95, 0.22), 0 0 12px rgba(14, 122, 95, 0.8);
-}
-
-@media (max-width: 980px) {
-  .console-split {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ---------- Scroll cue removed: scroll cues are banned ---------- */
 
 /* ---------- Turnover-style hero layout (copy · visual · floating cards) ---------- */
@@ -1184,12 +1463,29 @@ h1, h2, h3, h4 {
   z-index: 1;
   max-width: 1200px;
   display: grid;
-  grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.62fr) minmax(0, 0.5fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
   align-content: center;
-  gap: clamp(20px, 2.5vw, 40px);
+  gap: clamp(24px, 3vw, 56px);
   flex: 1;
   padding-block: clamp(36px, 4vw, 60px) clamp(48px, 5vw, 72px);
+}
+
+@media (max-width: 980px) {
+  .tn-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .tn-copy {
+    max-width: 680px;
+  }
+
+  /* The 3D board returns to normal flow below the copy. */
+  .hx3d-scene {
+    grid-column: auto;
+    grid-row: auto;
+    margin-top: clamp(12px, 4vw, 28px);
+  }
 }
 
 .tn-copy {
@@ -1375,17 +1671,6 @@ a:hover .tn-arrow {
   transform: translateX(3px);
 }
 
-/* Ambient glow behind the capability stack */
-
-.tn-glow {
-  position: absolute;
-  width: min(480px, 100%);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 42%, rgba(14, 122, 95, 0.4), rgba(14, 122, 95, 0.12) 46%, transparent 68%);
-  filter: blur(4px);
-}
-
 /* ---------- Play-link secondary CTA ---------- */
 
 .tn-play {
@@ -1444,10 +1729,6 @@ a:hover .tn-arrow {
 @media (max-width: 900px) {
   .tn-stage {
     grid-template-columns: 1fr;
-  }
-  .tn-visual {
-    min-height: 380px;
-    order: 2;
   }
   .tn-stats {
     grid-template-columns: 1fr 1fr;
